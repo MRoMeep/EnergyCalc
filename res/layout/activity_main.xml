@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1B1B1B"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wybierz urządzenie"
+            android:textColor="#AAAAAA"
+            android:textSize="12sp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-medium" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/spinner_background">
+            <Spinner
+                android:id="@+id/spinnerDevice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:backgroundTint="#FFD54F" />
+        </FrameLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutCustomPower"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:visibility="gone"
+            app:boxStrokeColor="#FFD54F"
+            app:hintTextColor="#FFD54F"
+            android:textColorHint="#888888"
+            app:suffixText=" W"
+            app:suffixTextColor="#FFD54F">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editCustomPower"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Moc urządzenia"
+                android:textColor="#FFFFFF"
+                android:inputType="number"
+                android:maxLength="5" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textHoursLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Użytkowanie: 6 h/dzień"
+            android:textColor="#EEEEEE"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium" />
+
+        <com.example.energycalc.CustomTickSeekBar
+            android:id="@+id/seekBarHours"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="24dp"
+            android:max="24"
+            android:progress="6"
+            android:progressDrawable="@drawable/custom_seekbar_progress"
+            android:thumb="@drawable/custom_seekbar_thumb"
+            android:splitTrack="false" />
+
+        <TextView
+            android:id="@+id/textDaysLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Okres: 30 dni"
+            android:textColor="#EEEEEE"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium" />
+
+        <com.example.energycalc.CustomTickSeekBar
+            android:id="@+id/seekBarDays"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="24dp"
+            android:max="31"
+            android:progress="30"
+            android:progressDrawable="@drawable/custom_seekbar_progress"
+            android:thumb="@drawable/custom_seekbar_thumb"
+            android:splitTrack="false" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:boxStrokeColor="#FFD54F"
+            app:hintTextColor="#FFD54F"
+            app:suffixText=" zł/kWh"
+            app:suffixTextColor="#FFD54F">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Cena energii"
+                android:textColor="#FFFFFF"
+                android:inputType="numberDecimal"
+                android:text="0.78"
+                android:maxLength="5" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/checkNightTariff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Taryfa nocna (-30%)"
+            android:textColor="#AAAAAA"
+            android:buttonTint="#FFD54F" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupCurrency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioPLN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="PLN"
+                android:textColor="#FFFFFF"
+                android:buttonTint="#FFD54F" />
+
+            <RadioButton
+                android:id="@+id/radioEUR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EUR 4.25"
+                android:textColor="#FFFFFF"
+                android:buttonTint="#FFD54F" />
+
+            <RadioButton
+                android:id="@+id/radioUSD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="USD 3.95"
+                android:textColor="#FFFFFF"
+                android:buttonTint="#FFD54F" />
+        </RadioGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonCalculate"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="Oblicz koszt"
+            android:textSize="18sp"
+            android:textColor="#1B1B1B"
+            app:backgroundTint="#FFD54F"
+            app:cornerRadius="16dp"
+            android:fontFamily="sans-serif-black" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardResults"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="#2A2A2A"
+            app:cardCornerRadius="20dp"
+            app:strokeWidth="2dp"
+            app:strokeColor="#444444">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PODSUMOWANIE"
+                    android:textColor="#FFD54F"
+                    android:textSize="13sp"
+                    android:fontFamily="sans-serif-black"
+                    android:letterSpacing="0.15"
+                    android:layout_marginBottom="20dp"/>
+
+                <TextView
+                    android:id="@+id/textMonthlyMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="32sp"
+                    android:fontFamily="sans-serif-black"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="szacowany koszt miesięczny"
+                    android:textColor="#AAAAAA"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="24dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#444444"
+                    android:layout_marginBottom="20dp"/>
+
+                <TextView
+                    android:id="@+id/textResults"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#EEEEEE"
+                    android:textSize="15sp"
+                    android:lineSpacingExtra="12dp"
+                    android:fontFamily="sans-serif-medium"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonShare"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Udostępnij wynik"
+                    android:textColor="#FFD54F"
+                    app:icon="@android:drawable/ic_menu_share"
+                    app:iconTint="#FFD54F" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>

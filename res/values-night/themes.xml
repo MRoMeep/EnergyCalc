@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.EnergyCalc" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#FFD54F</item>
+        <item name="colorOnPrimary">#000000</item>
+    </style>
+</resources>
